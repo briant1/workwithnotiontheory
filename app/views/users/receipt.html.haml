@@ -1,0 +1,9 @@
+.container.padded-container
+  .row
+    .col-md-12.text-center
+      %p
+        Thanks for your submission, we will be in touch!
+      %h1
+        It took you
+        = ((current_user.submitted_at - current_user.created_at)/3600).round(2)
+        hours

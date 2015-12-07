@@ -1,2 +1,48 @@
-%h1 Pages#index
-%p Find me in app/views/pages/index.html.erb
+.cover
+  .intro
+    Work with NotionTheory
+.container.padded-container
+  .row
+    .col-md-12.text-center
+      %h2
+        Why work with us:
+    .col-md-4.text-center
+      %h4
+        .btn.btn-primary
+          1
+        %br
+        %br
+        Do cool things
+    .col-md-4.text-center
+      %h4
+        .btn.btn-primary
+          2
+        %br
+        %br
+        Understand the difference between perfect and efficient
+    .col-md-4.text-center
+      %h4
+        .btn.btn-primary
+          3
+        %br
+        %br
+        Work with cutting edge technologies
+.section.highlight-container
+  .container.padded-container
+    .row
+      .col-md-12.text-center
+        %h2
+          The hiring process
+        %p
+          Rather than have a typical technical interview.  We purpose a sample project with requirements, design and wireframes for you to develop and deploy in up to 3 days.
+          You can pick the language, we prefer rails. We don't expect this to be perfect but it should function correctly.  We will walk through the site and code together to
+          understand your thought process and problem solving skills.
+.container.bottom-container
+  .row
+    .col-md-6.col-md-offset-3.text-center
+      = link_to 'Begin the Process', new_user_registration_path, class: "btn btn-primary form-control"
+.section.highlight-container
+  .container.padded-container
+    .row
+      .col-md-12.text-center
+        = ":)"

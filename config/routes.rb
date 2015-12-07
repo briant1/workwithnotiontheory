@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  get 'user/edit'
+
   get 'pages/index'
 
+  get 'startup_crate_intro' => 'pages#startup_crate_intro', as: :startup_crate_intro
+
+  get 'pages/download_design'
+  get 'pages/download_wireframes'
+
   devise_for :users
+  resources :users
+
+  get 'receipt' => 'users#receipt'
 
   root 'pages#index'
   # The priority is based upon order of creation: first created -> highest priority.

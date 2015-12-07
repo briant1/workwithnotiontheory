@@ -1,0 +1,117 @@
+.container.padded-container
+  .row
+    .col-md-12.text-center
+      %p
+        The clock has begun, good luck!
+      %h1
+        #countdown
+.container.padded-container
+  .row
+    .col-md-12.text-center
+      %h4
+        Below you will find a link to the design document and wireframes.  The text below is a list of requirements.
+.container.padded-container
+  .row
+    .col-md-2.col-md-offset-3
+      = link_to 'design', '/design.jpg', class: 'btn btn-primary form-control'
+    .col-md-2.col-md-offset-2
+      = link_to 'wireframes', '/wireframes.pdf', class: 'btn btn-primary form-control'
+.container.padded-container
+  .row
+    .col-md-12
+      .text-center
+        %h2
+          Startup Crate Requirements
+
+      %h3
+        Objective
+      %p
+        Build a website for users to subscribe themselves or gift a monthly startup crate.
+
+      %h3
+        Project Requirements
+
+      %h4
+        User Accounts
+      %p
+        %ul
+          %li
+            User
+          %li
+            name
+          %li
+            email
+          %li
+            password
+          %li
+            address
+          %li
+            gift address (optional)
+      %h3
+        Application
+
+      %h4
+        Web application
+      %p
+        %ul
+          %li
+            The user shall be able to log into and out of the application
+          %li
+            The user shall be able to select a plan
+          %li
+            The user shall be able to cancel their subscription
+          %li
+            The user shall be able to upgrade or downgrade their plan
+          %li
+            The user shall be able to select a different address for a gift
+      %h3
+        Third Party Services
+      %p
+        %ul
+          %li
+            Heroku
+            %li
+              $7/mo. hosting
+          %li
+            Amazon
+            %li
+              AWS Free Tier (1 year) http://aws.amazon.com/free/
+            %li
+              5 GB of Amazon S3 standard storage, 20,000 Get Requests, 2,000 Put Requests, and 15GB of data transfer out each month for one year.
+.container.padded-container
+  .row
+    .col-md-6.col-md-offset-3
+      %h2.text-center
+        Submit your project
+      = form_for(current_user) do |f|
+        %b
+          heroku url:
+        %br
+        = f.text_field :project_heroku_url, class: 'form-control'
+        %b
+          github url:
+        %br
+        = f.text_field :project_github_url, class: 'form-control'
+        %br
+        %br
+        .text-center
+          = f.submit "Submit", :class => 'form-control btn btn-primary'
+:javascript
+  start = "#{current_user.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%Y/%m/%d %H:%M:%S')}";
+:javascript
+  function intro_ready(){
+    $("#countdown")
+     .countdown(start, {elapse: true})
+      .on('update.countdown', function(event) {
+        if (event.elapsed) { // Either true or false
+           $(this).text(
+             event.strftime('%H:%M:%S')
+           );
+        } else {
+          // Countdown...
+        }
+      });
+  }
+  $.turbo.addCallback(intro_ready);
+
+
